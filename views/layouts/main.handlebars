@@ -28,6 +28,12 @@
 </nav>
 
 </head>
+{{#if logged_in}}
+<p>Welcome blogger!</p>
+{{else}}
+<p>Welcome to Tech Spot Blog! Log in for the full experience.</p>
+{{/if}}
+
   <main class="container container-fluid mt-5">
     {{{ body }}}
   </main>
