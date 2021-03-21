@@ -1,19 +1,20 @@
 const router = require('express').Router();
-const { Blog } = require('../../models');
+const { Blog } = require('../models');
+// const withAuth = require('../utils/auth');
 
-//Using the '/api/dashboard' route
+//Using the '/dashboard' route
 
 //Get all user blog posts
 router.get('/', async (req, res) => {
     try {
         const blogData = await Blog.findAll({
-            where: {
-                user_id: req.session.user_id,
-            }
+            // where: {
+            //     user_id: req.session.user_id,
+            // }
         });
         const blogs = blogData.map((blog) => blog.get({ plain: true}));
 
-        res.render('dashboard', {
+        res.render('homepage', {
             blogs,
             logged_in: req.session.logged_in
         });
