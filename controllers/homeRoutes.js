@@ -40,15 +40,13 @@ router.get('/login', (req, res) => {
     res.redirect('/');
     return;
   }
-
   res.render('login');
 });
 
 router.get('/logout', (req, res) => {
-  res.render('/', {
+  res.render('logout', {
     loggedIn: req.session.logged_in,
   })
-  res.redirect('/');
 });
 
 router.get('/signup', (req, res) => {
