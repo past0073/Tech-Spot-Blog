@@ -19,6 +19,8 @@
    */
   body {
     margin: 0;
+    background-color: rgb(121, 115, 115);
+  
   }
   
   /**
@@ -26,6 +28,7 @@
    */
   main {
     display: block;
+    color: white;
   }
   
   /**
