@@ -35,9 +35,6 @@
   h1 {
     font-size: 2em;
     margin: 100px;
-    background-color: #1bbc9b;
-    border-radius: 20px;
-    width: 250px;
   }
 
   .glow-on-hover {
