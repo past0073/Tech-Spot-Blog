@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Blog } = require('../../models');
+const { Blog } = require('../../models');
 
 //Using the '/api/dashboard' route
 
