@@ -1,6 +1,6 @@
 const router = require('express').Router();
-const { Blog } = require('../models');
-// const withAuth = require('../utils/auth');
+const { Blog, User } = require('../models');
+const withAuth = require('../utils/auth');
 
 //Using the '/dashboard' route
 
@@ -23,16 +23,18 @@ const { Blog } = require('../models');
 // });
 
 //Get all user blog posts
-router.get('/', async (req, res) => {
+router.get('/', withAuth, async (req, res) => {
     try {
         const blogData = await Blog.findAll({
-            // where: {
-            //     user_id: req.session.user_id,
-            // }
+            attributes: ['title', 'content', 'user_id'],
         });
+        console.log(blogData);
+        // if (!logged_in) {
+        //     res.redirect('/login');
+        // }
         const blogs = blogData.map((blog) => blog.get({ plain: true}));
 
-        res.render('homepage', {
+        res.render('dashboard', {
             blogs,
             logged_in: req.session.logged_in
         });

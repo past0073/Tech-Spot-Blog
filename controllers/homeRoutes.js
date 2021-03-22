@@ -3,14 +3,12 @@ const { Blog, User } = require('../models');
 
 router.get( '/', async (req, res) => {
   try {
-    const blogData = await User.findAll({
-      include: [{
-        model: Blog,
-      }]
-    })
+    const blogData = await Blog.findAll({
+      // attributes: ['title', 'content', 'user_id'],
+  });
     const blogs = blogData.map((blog) => blog.get({ plain: true }));
     res.render('homepage', {
-      blogs,
+      ...blogs,
       loggedIn: req.session.logged_in
     });
   } catch (err) {
@@ -19,11 +17,13 @@ router.get( '/', async (req, res) => {
 })
 
 router.get('/login', (req, res) => {
+  console.log("login route hit")
   if (req.session.logged_in) {
     res.redirect('/');
     return;
   }
   res.render('login');
+  console.log("login route complete")
 });
 
 router.get('/logout', (req, res) => {

@@ -1,12 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tech Spot Blog</title>
-</head>
-<body>
- {{{ body }}}
-</body>
-</html>
+
+<div class="blogPosts">
+    <p>Written by: {{blog.title}}{{user.name}}</p> 
+    <p>Title:{{title}}</p> 
+    <p>Content:{{blog.content}}</p>
+</div>
+
+<button class="glow-on-hover" style="position: absolute; bottom: 10%; left:40%" type="button"><a style="color: white" href='/'>Write New Post</a></button>

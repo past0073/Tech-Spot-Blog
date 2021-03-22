@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { User } = require('../../models');
+const withAuth = require('../../utils/auth');
 
 //Using /api/users/
 
@@ -10,6 +11,7 @@ router.post('/signup', async (req, res) => {
 
     req.session.save(() => {
       req.session.user_id = userData.id;
+      req.session.email = userData.email;
       req.session.logged_in = true;
 
       res.status(200).json(userData);
@@ -21,6 +23,7 @@ router.post('/signup', async (req, res) => {
 
 //Login
 router.post('/login', async (req, res) => {
+  console.log("logging in")
   try {
     const userData = await User.findOne({ where: { email: req.body.email } });
 
@@ -43,7 +46,8 @@ router.post('/login', async (req, res) => {
     req.session.save(() => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
-      
+      req.session.email = userData.email;
+
       res.json({ user: userData, message: 'You are now logged in!' });
     });
 
